@@ -11,6 +11,9 @@ end
 
 
 function update(self, dt)
+	-- duration info can be seen in the web profiler
+	local forest = descend.get_forest()
+	local tree = descend.get_tree("/go1")
 end
 
 function on_message(self, message_id, message, sender)

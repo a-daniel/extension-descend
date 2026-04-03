@@ -68,6 +68,14 @@ namespace dmDescend
             }
 
             lua_settable(L, -3);
+        }else{
+            //push parent node id
+            dmScript::PushHash(L, phinstance->m_Identifier); 
+
+            //create and push empty table 
+            lua_newtable(L);
+
+            lua_settable(L, -3);
         }
     }
 
