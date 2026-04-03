@@ -18,7 +18,7 @@ To use this library in your Defold project add the repo archive URL https://gith
 ```lua
 --=== get descendants of a game object
 local ancestor_id = go.get_id("/some_go") 
-local descendands_tree = descend.get_tree(ancestor_id)
+local descendants_tree = descend.get_tree(ancestor_id)
 
 -- ==== traverse descendants of a game object
 local function traverse_tree(tree, node)
@@ -30,13 +30,13 @@ local function traverse_tree(tree, node)
   end
 end
 
-traverse_tree(descendands_tree, ancestor_id) 
+traverse_tree(descendants_tree, ancestor_id) 
 
 --==== traverse all game objects in the scene
 local forest = descend.get_forest()
 
-for ancestor_id,descendands_tree in pairs(forest) do
-  traverse_tree(descendands_tree,ancestor_id)
+for ancestor_id,descendants_tree in pairs(forest) do
+  traverse_tree(descendants_tree,ancestor_id)
 end
 ```
 
