@@ -1,0 +1,7 @@
+/.internal
+/build
+/_bundles
+.DS_Store
+Thumbs.db
+*.der
+/.editor_settings
