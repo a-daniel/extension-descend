@@ -1,22 +1,29 @@
 function init(self)
-	local forest = descend.get_forest()
-	print("===== forest ==== ")
-	pprint(forest)
-
-	
-	local tree = descend.get_tree("/go1")
-	print("===== tree ==== ")
-	pprint(tree)
+	msg.post("#proxy1","load")
 end
-
 
 function update(self, dt)
 	-- duration info can be seen in the web profiler
 	local forest = descend.get_forest()
-	local tree = descend.get_tree("/go1")
+	local tree = descend.get_tree("/go")
 end
 
 function on_message(self, message_id, message, sender)
+	if message_id == hash("proxy_loaded") then
+		msg.post(sender,"enable")
+		
+		timer.delay(0.1, false, function()
+			local forest = descend.get_forest()
+			print("===== forest ==== ")
+			pprint(forest)
+
+
+			local tree = descend.get_tree("/go")
+			print("===== tree ==== ")
+			pprint(tree)
+
+		end)
+	end
 end
 
 function on_input(self, action_id, action)

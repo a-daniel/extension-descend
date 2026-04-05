@@ -8,9 +8,14 @@
 To use this library in your Defold project add the repo archive URL https://github.com/a-daniel/extension-descend/archive/refs/heads/main.zip to your `game.project` dependencies. 
 
 ## API
-```lua descend.get_tree(ancestor_id)```  Returns a tree of game objects that have a particular ancestor. The tree is represented as a table that maps game object ids(as hash) to an array of their children's ids(as hash).
-
-```lua descend.get_forest()```  Returns all the trees in the scene. The forest is represented as a table that maps the root game object ids to their tree.
+```lua
+descend.get_tree(ancestor_id)
+```
+Returns a tree of game objects that have a particular ancestor. The tree is represented as a table that maps game object ids(as hash) to an array of their children's ids(as hash).
+```lua
+descend.get_forest()
+```
+ Returns all the trees in the scene. The forest is represented as a table that maps the root game object ids to their tree.
 
 
 ## Usage

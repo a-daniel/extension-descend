@@ -1,0 +1,11 @@
+name: "c1"
+scale_along_z: 0
+embedded_instances {
+  id: "go"
+  children: "go1"
+  data: ""
+}
+embedded_instances {
+  id: "go1"
+  data: ""
+}

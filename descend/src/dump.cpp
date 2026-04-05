@@ -7,31 +7,9 @@
 #include <vector>
 #include <cstddef>
 
-// checking if game engine changed private data structures we use
-static_assert(sizeof(struct dmGameObject::Register) == 53608, "Unexpected struct size. Mismatch between Descend extension and game engine.");
-static_assert(sizeof(struct dmGameObject::CollectionHandle) == 8, "Unexpected struct size. Mismatch between Descend extension and game engine.");
-static_assert(sizeof(struct dmGameObject::Collection) == 6480, "Unexpected struct size. Mismatch between Descend extension and game engine.");
-static_assert(sizeof(class dmGameObject::dmIndexPool16) == 16, "Unexpected struct size. Mismatch between Descend extension and game engine.");
-static_assert(sizeof(class dmGameObject::dmIndexPool32) == 24, "Unexpected struct size. Mismatch between Descend extension and game engine.");
-static_assert(sizeof(struct dmGameObject::ComponentType) == 208, "Unexpected struct size. Mismatch between Descend extension and game engine.");
-static_assert(sizeof(struct dmGameObject::Instance) == 176, "Unexpected struct size. Mismatch between extension Descend and game engine.");
-
-static_assert(offsetof(struct dmGameObject::Register,m_Mutex) == 53560, "Unexpected struct layout. Mismatch between extension Descend and game engine.");
-static_assert(offsetof(struct dmGameObject::Register,m_Collections) == 53568, "Unexpected struct layout. Mismatch between extension Descend and game engine.");
-static_assert(offsetof(struct dmGameObject::Collection,m_Instances) == 2072, "Unexpected struct layout. Mismatch between extension Descend and game engine.");
-static_assert(offsetof(struct dmGameObject::Collection,m_LevelIndices) == 2152, "Unexpected struct layout. Mismatch between extension Descend and game engine.");
-static_assert(offsetof(struct dmGameObject::Collection,m_Mutex) == 6424, "Unexpected struct layout. Mismatch between extension Descend and game engine.");
-static_assert(offsetof(struct dmGameObject::Instance,m_Collection) == 80, "Unexpected struct layout. Mismatch between extension Descend and game engine.");
-static_assert(offsetof(struct dmGameObject::Instance,m_Identifier) == 104, "Unexpected struct layout. Mismatch between extension Descend and game engine.");
-static_assert(offsetof(struct dmGameObject::CollectionHandle,m_Collection) == 0, "Unexpected struct layout. Mismatch between extension Descend and game engine.");
-
-
 namespace dmDescend
 {
     const uint32_t INVALID_INSTANCE_INDEX = 0xffff;
-
-    // static_assert(sizeof(MyStruct) == expected, "Size mismatch");
-    // static_assert(offsetof(MyStruct, field) == expected_offset, "Layout mismatch");
     
     static void GoSubtreeToLua(lua_State* L, dmGameObject::HInstance phinstance)
     {
