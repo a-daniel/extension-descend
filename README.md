@@ -14,11 +14,11 @@
 ```lua
 descend.get_tree(ancestor_id)
 ```
-Returns a tree of game objects that have a particular ancestor. The tree is represented as a table that maps game object ids(as hash) to an array of their children's ids(as hash).
+Returns a tree of game objects that have a particular ancestor. The tree is represented as a table that maps the id(hash) of a game object to an array of it's children(hash).
 ```lua
 descend.get_forest()
 ```
- Returns all the trees in the scene. The forest is represented as a table that maps the root game object ids to their tree.
+ Returns all the trees in the scene. The forest is represented as a table that maps the id(hash) of a root game object to it's tree.
 
 
 ## Usage
