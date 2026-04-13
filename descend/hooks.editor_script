@@ -1,0 +1,17 @@
+local M = {}
+
+function M.on_build_started(opts)
+    
+    local manifest_path = "/descend/ext.manifest"
+    local manifest_attr = editor.resource_attributes(manifest_path)
+    if manifest_attr.exists and manifest_attr.is_file and editor.can_set(manifest_path, "text") then
+        local vmajor,vmid,vminor = string.match(editor.version,"(%d+)%.(%d+)%.(%d+)")
+        local versionint = vmajor*10000+vmid*100+vminor
+        local manifest_text = "name: Descend\nplatforms:\n common:\n  context:\n   defines: [\"DEFOLD_VERSION=" .. versionint .."\"]"
+        editor.transact({editor.tx.set(manifest_path,"text",manifest_text)})
+        editor.save()
+    end
+    
+end
+
+return M

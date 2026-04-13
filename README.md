@@ -2,10 +2,13 @@
 [Defold](https://www.defold.com/) native extension. Returns descendants of game objects.
 
 ## Disclaimers
-⚠️ Extension Descend relies on game engines's private data structures so it's vulnerable to game engine internal changes! Currently known to work with Defold 1.12.2.
+⚠️ Extension Descend relies on Defold's private data structures so it's compatible with a limited number of Defold versions! Currently, it works with Defold 1.12.0 to 1.12.3 !.
 
-## Installation
-To use this library in your Defold project add the repo archive URL https://github.com/a-daniel/extension-descend/archive/refs/heads/main.zip to your `game.project` dependencies. 
+## Installation steps
+1. Add the repo archive URL https://github.com/a-daniel/extension-descend/archive/refs/heads/main.zip to your `game.project` dependencies.  
+2.  - If you don't have a `hooks.editor_script` in your project then you must use the one from this extension. Copy it in the folder of your `game.project` file.  
+    - If you already have a `hooks.editor_script` in your project then you must update it to include the functionality from this extension's `hooks.editor_script`.
+3. Reload editor scripts (ctrl + shift + R).  
 
 ## API
 ```lua

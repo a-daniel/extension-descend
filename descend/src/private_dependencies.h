@@ -4,13 +4,29 @@
 #include <dmsdk/dlib/vmath.h>
 #include <dmsdk/dlib/transform.h>
 
-// !!!!!!!! improvization needed because we can't include gameobject_private.h  !!!!!!!!
+// !!! improvization needed because we can't include gameobject_private.h !!!
+
 #warning (Extension Descend violates strict aliasing rule! This may lead to undefined behaviour!)
 #warning (Extension Descend relies on game engines`s private data structures so it`s vulnerable to private changes!)
 
+#define STRING(x) #x
+#define COMPATIBILITY_ERROR(v,min,max) static_assert(false, "Extension Descend is compatible with Defold versions [" STRING(min) " - " STRING(max) "]! Your Defold version = "  STRING(v) " !")
+
+#define MIN_VERSION 11200
+#define MAX_VERSION 11203
+
+#ifdef DEFOLD_VERSION
+#if DEFOLD_VERSION < MIN_VERSION || DEFOLD_VERSION > MAX_VERSION
+COMPATIBILITY_ERROR(DEFOLD_VERSION,MIN_VERSION, MAX_VERSION);
+#endif
+#else
+#error Descend`s ext.manifest must define DEFOLD_VERSION! (Check if hooks.editor_script is set up according to installation steps from https://github.com/a-daniel/extension-descend/blob/main/README.md !)
+#endif
+
+
 namespace dmGameObject
 {
-    // =====  copy of struct Instance from gameobject_private.h 
+    // =====  copy of struct Instance from gameobject_private.h
     struct Instance
     {
         Instance(void* prototype)
@@ -67,6 +83,7 @@ namespace dmGameObject
         uintptr_t       m_ComponentInstanceUserData[0];
     };
 
+    // =====  copy of struct ComponentType from component.h
     struct ComponentType
     {
         ComponentType();
@@ -103,6 +120,7 @@ namespace dmGameObject
         uint16_t                m_UpdateOrderPrio;
     };
 
+    // =====  copy of class dmIndexPo from index_pool.h
     template <typename T>
     class dmIndexPool
     {
@@ -130,6 +148,7 @@ namespace dmGameObject
     class dmIndexPool16 : public dmIndexPool<uint16_t> {};
     class dmIndexPool32 : public dmIndexPool<uint32_t> {};
 
+    // =====  copy of struct Collection from gameobject_private.h
     const uint32_t MAX_HIERARCHICAL_DEPTH = 128;
     struct Collection
     {
@@ -196,13 +215,14 @@ namespace dmGameObject
         uint32_t                 m_FirstUpdate : 1;
     };
 
+    // =====  copy of struct CollectionHandle from gameobject_private.h
     struct CollectionHandle
     {
         Collection* m_Collection;
     };
-    
+
+    // =====  copy of struct Register from gameobject_private.h
     const uint32_t MAX_COMPONENT_TYPES = 255;
-    
     struct Register
     {
         uint32_t                    m_ComponentTypeCount;
