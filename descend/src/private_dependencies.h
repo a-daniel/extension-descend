@@ -13,7 +13,7 @@
 #define COMPATIBILITY_ERROR(v,min,max) static_assert(false, "Extension Descend is compatible with Defold versions [" STRING(min) " - " STRING(max) "]! Your Defold version = "  STRING(v) " !")
 
 #define MIN_VERSION 11200
-#define MAX_VERSION 11203
+#define MAX_VERSION 11300
 
 #ifdef DEFOLD_VERSION
 #if DEFOLD_VERSION < MIN_VERSION || DEFOLD_VERSION > MAX_VERSION

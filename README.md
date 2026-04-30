@@ -2,7 +2,7 @@
 [Defold](https://www.defold.com/) native extension. Returns descendants of game objects.
 
 ## Disclaimers
-⚠️ Extension Descend relies on Defold's private data structures so it's compatible with a limited number of Defold versions! Currently, it works with Defold 1.12.0 to 1.12.3 !.
+⚠️ Extension Descend relies on Defold's private data structures so it's compatible with a limited number of Defold versions! Currently, it works with Defold 1.12.0 to 1.13.0 !.
 
 ## Installation steps
 1. Add the repo archive URL https://github.com/a-daniel/extension-descend/archive/refs/heads/main.zip to your `game.project` dependencies.  
